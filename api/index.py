@@ -32,7 +32,7 @@ def main():
     nltk.data.path = ['nltk_data']
     if request.method == 'POST':
         article = request.form['article']
-        html_processed = word_extractor(article)
+        html_processed = process_article(article)
         return render_template('result.html', html_processed=html_processed)
     return render_template('index.html')
 
