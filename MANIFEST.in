@@ -1,0 +1,20 @@
+include README.md
+include LICENSE
+include .gitignore
+include requirements.txt
+include vercel.json
+
+recursive-include api *
+recursive-include corpora *
+recursive-include example *
+recursive-include nltk_data *
+recursive-include scripts *
+
+# prune doc
+prune test
+
+global-exclude *__del.py
+global-exclude *__dev.py
+global-exclude *.pyc
+global-exclude .DS_Store
+global-exclude .idea
