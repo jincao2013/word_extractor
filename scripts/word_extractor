@@ -20,7 +20,7 @@ if __name__ == "__main__":
     save_fname = input_fname + '.html'
 
     # load corpus
-    corpus_coca20000 = PlaintextCorpusReader(corpora_path, 'coca-20000.txt')
+    corpus_coca20000 = PlaintextCorpusReader(corpora_path, 'coca-20000-lemma.txt')
     corpus_ielts_zhenjing = PlaintextCorpusReader(corpora_path, 'ielts_zhenjing.txt')
     corpus_longman3000 = PlaintextCorpusReader(corpora_path, 'Longman Communication 3000.txt')
 
