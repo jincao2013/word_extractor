@@ -27,9 +27,9 @@ app = Flask(__name__)
 #     processed_article = get_html(article, coca_words, longman_words_hard, ielts_words_hard)
 #     return processed_article
 
-def process_article(raw):
-    num_coca_exclude = 3000  # this will exclude the top 3000 coca words
-    corpora_path = r'corpora'
+def process_article(raw, num_coca_exclude=3000):
+    # num_coca_exclude = 3000  # this will exclude the top 3000 coca words
+    corpora_path = r'../corpora'
 
     # load corpus
     corpus_coca20000 = PlaintextCorpusReader(corpora_path, 'coca-20000-lemma.txt')
@@ -49,10 +49,11 @@ def process_article(raw):
 
 @app.route('/', methods=['GET', 'POST'])
 def main():
-    nltk.data.path = ['nltk_data']
+    # nltk.data.path = ['nltk_data']
     if request.method == 'POST':
         article = request.form['article']
-        html_processed = process_article(article)
+        num_coca_exclude = int(request.form['num_coca_exclude'])
+        html_processed = process_article(article, num_coca_exclude)
         return render_template('result.html', html_processed=html_processed)
     return render_template('index.html')
 
