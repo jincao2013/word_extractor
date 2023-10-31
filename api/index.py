@@ -29,7 +29,7 @@ app = Flask(__name__)
 
 def process_article(raw, num_coca_exclude=3000):
     # num_coca_exclude = 3000  # this will exclude the top 3000 coca words
-    corpora_path = r'../corpora'
+    corpora_path = r'corpora'
 
     # load corpus
     corpus_coca20000 = PlaintextCorpusReader(corpora_path, 'coca-20000-lemma.txt')
@@ -49,7 +49,7 @@ def process_article(raw, num_coca_exclude=3000):
 
 @app.route('/', methods=['GET', 'POST'])
 def main():
-    # nltk.data.path = ['nltk_data']
+    nltk.data.path = ['nltk_data']
     if request.method == 'POST':
         article = request.form['article']
         num_coca_exclude = int(request.form['num_coca_exclude'])
